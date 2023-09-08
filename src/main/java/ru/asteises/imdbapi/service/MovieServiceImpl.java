@@ -41,6 +41,7 @@ public class MovieServiceImpl implements MovieService {
         ObjectMapper objectMapper = new ObjectMapper();
         ResponseBody responseBody = getResponseBody(client, request);
         try {
+            // TODO как принять лист?
             top100MovieApiDtos = Arrays.stream(objectMapper.readValue(
                     responseBody.bytes(), MovieApiDto[].class)).toList();
         } catch (IOException e) {

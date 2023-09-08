@@ -22,6 +22,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ClientApiController {
 
+    // TODO Обернуть в докер
+    // TODO CICD - Editor - выбрать ветку на 8086 порту
+    private final OkHttpClient client;
     private final MovieService movieService;
 
     /**
@@ -67,23 +70,7 @@ public class ClientApiController {
      * @return - OkHttpClient
      */
     private OkHttpClient getClient() {
-        return OkHttpClientSingleton.getInstance().client;
-    }
-
-    public static final class OkHttpClientSingleton {
-        private static OkHttpClientSingleton INSTANCE;
-        private final OkHttpClient client;
-
-        private OkHttpClientSingleton() {
-            client = new OkHttpClient();
-        }
-
-        public static OkHttpClientSingleton getInstance() {
-            if (INSTANCE == null) {
-                INSTANCE = new OkHttpClientSingleton();
-            }
-            return INSTANCE;
-        }
+        return this.client;
     }
 }
 
